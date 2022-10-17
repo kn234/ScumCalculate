@@ -1,4 +1,4 @@
-import scum.Human;
+import model.Person;
 import scum.ScumCalculate;
 
 import java.awt.*;
@@ -44,7 +44,8 @@ public class GUI extends JFrame {
 
     class ButtonResult implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String message = scumCalculate.result();
+            ScumCalculate.Debts debts = scumCalculate.calculateDebts();
+            String message = debts.toString();
             JOptionPane.showMessageDialog(null, message, "Result", JOptionPane.PLAIN_MESSAGE);
         }
     }
@@ -52,9 +53,7 @@ public class GUI extends JFrame {
     class ButtonAddHumanName implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String humanName = inputHumanName.getText();
-            Human human = new Human(humanName);
-            scumCalculate.addHuman(human);
-            scumCalculate.getHumanList().forEach(System.out::println);
+            Person person = new Person(humanName);
         }
     }
 
