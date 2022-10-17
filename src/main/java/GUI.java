@@ -1,18 +1,17 @@
-import scum.Scumcalculate;
+import model.Person;
+import scum.ScumCalculate;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class GUI extends JFrame {
-
     private final JTextField inputHumanName = new JTextField("", 5);
-
-    //private final JCheckBox check1 = new JCheckBox("Check", false);
+    private final ScumCalculate scumCalculate;
 
     public GUI() {
-
-        super("Gayshittt");
+        super("ScumCalculus");
+        this.scumCalculate = new ScumCalculate();
         this.setBounds(500, 300, 500, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -43,19 +42,18 @@ public class GUI extends JFrame {
         container.add(labelTable);
     }
 
-
-    static class ButtonResult implements ActionListener {
+    class ButtonResult implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String message = Scumcalculate.result();
+            ScumCalculate.Debts debts = scumCalculate.calculateDebts();
+            String message = debts.toString();
             JOptionPane.showMessageDialog(null, message, "Result", JOptionPane.PLAIN_MESSAGE);
         }
     }
 
     class ButtonAddHumanName implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String human = inputHumanName.getText();
-            new Scumcalculate.Human(human);
-            Scumcalculate.humanList.forEach(System.out::println);
+            String humanName = inputHumanName.getText();
+            Person person = new Person(humanName);
         }
     }
 
@@ -64,7 +62,5 @@ public class GUI extends JFrame {
 
         }
     }
-
-
 }
 
