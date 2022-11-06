@@ -61,7 +61,7 @@ public class ScumCalculate {
                     toDo = "should be paid " + (-debt.getValue());
                 }
 
-                stringBuilder.append(debt.getKey()).append(" ").append(toDo).append("\n");
+                stringBuilder.append(debt.getKey().getName()).append(" ").append(toDo).append("\n");
             }
 
             return stringBuilder.toString();

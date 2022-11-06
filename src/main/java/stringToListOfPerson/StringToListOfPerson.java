@@ -6,8 +6,8 @@ import model.Person;
 
 public class StringToListOfPerson {
     public static List<Person> stringToList(String str) {
-        StringBuilder humanName = new StringBuilder("");
-        List result = new ArrayList<>();
+        StringBuilder humanName = new StringBuilder();
+        List<Person> result = new ArrayList<>();
         StringBuilder strWithEnd = new StringBuilder(str);
         strWithEnd.append(" ");
         for (int i = 0; i < strWithEnd.length(); i++) {
